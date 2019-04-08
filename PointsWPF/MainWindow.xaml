@@ -1,0 +1,41 @@
+﻿<Window x:Class="PointsWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PointsWPF"
+        mc:Ignorable="d"
+        Title="PointsWPF" Height="391.097" Width="493.424" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFE5E5E5" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="False">
+            <Button x:Name="OpenFile" Content="OpenFile" Height="35" VerticalAlignment="Center" Width="75" HorizontalAlignment="Center" Click="OpenFile_Click"/>
+            <Button x:Name="Add" Content="Add" Height="35" VerticalAlignment="Center" Width="75" HorizontalAlignment="Center" Click="Add_Click" Margin="0"/>
+            <Button x:Name="Delete" Content="Delete" Height="35" VerticalAlignment="Center" Width="75" HorizontalAlignment="Center" Click="Delete_Click" Margin="0"/>
+        </DockPanel>
+        <DataGrid x:Name="pointsGrid" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding}" SelectedItem="{Binding SelectedItem, Mode=TwoWay, NotifyOnSourceUpdated=True}" RowEditEnding="PointsGrid_RowEditEnding" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding X, StringFormat=F4, NotifyOnSourceUpdated=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="X" Width="200*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Y, StringFormat=F4, NotifyOnSourceUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Y" Width="200*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <StatusBar x:Name="statusBar" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Bottom" Grid.Row="1" />
+    </Grid>
+</Window>
